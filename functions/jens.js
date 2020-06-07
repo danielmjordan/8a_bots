@@ -58,16 +58,11 @@ const postSends = async (userName, dbSendCount, year) => {
     if (dbSendCount !== liveSendCount ) {
         var latestAscents = await axios
         .get(
-        `https://www.8a.nu/api/users/${userName}/ascents?categoryFilter=sportclimbing`
+            `https://www.8a.nu/api/users/${userName}/ascents?categoryFilter=sportclimbing&sortfield=date_desc`
         )
         .then((response) => response.data);
         latestAscents = latestAscents["ascents"];
-        const sortedAscents = latestAscents.sort((a, b) => {
-            a = Date.parse(a.date);
-            b = Date.parse(b.date);
-            return a>b ? -1 : a<b ? 1 : 0;
-        })
-        const newSends = sortedAscents.slice(0,liveSendCount - dbSendCount) || []
+        const newSends = latestAscents.slice(0,liveSendCount - dbSendCount) || [];
         newSends.forEach(async (sendData) => {
             msg = makeSendMessage(sendData)
             await slack.sends({

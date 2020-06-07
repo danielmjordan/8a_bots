@@ -66,3 +66,5 @@ node_modules/
 
 # my secrets
 functions/slackHooks.js
+*.ipynb
+.idea
