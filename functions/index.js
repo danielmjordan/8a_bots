@@ -9,4 +9,6 @@ const jens = require('./jens')
 
 exports.slashCommand = functions.https.onRequest(jens.slashCommand);
 exports.checkAllUsers = functions.https.onRequest(jens.checkAllUsers);
+
+// todo this throws an error at the end of the funtion, doesnt send a req or res
 exports.scheduledFunction = functions.pubsub.schedule("every 1 hours").onRun(jens.checkAllUsers)
