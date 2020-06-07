@@ -35,7 +35,6 @@ const checkAllUsers = async (req, res) => {
     const users = (
         await db.ref("users").once("value")
       ).val()
-
     Object.keys(users).forEach(async (user) => {
         var currentSends = users[user][currentyear]
         await postSends(user, currentSends, currentyear)
@@ -90,6 +89,10 @@ const slashCommand = async (req, res) => {
         addUser(req, res);
     } else if (params.toLowerCase().includes("list")) {
         getUserList(req, res);
+    } else if (params.toLowerCase().includes("check")) {
+        checkAllUsers(req, res);
+    } else {
+        res.send(`I can't do that yet`);
     }
 }
 

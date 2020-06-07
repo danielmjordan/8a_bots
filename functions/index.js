@@ -8,4 +8,5 @@ const jens = require('./jens')
 // });
 
 exports.slashCommand = functions.https.onRequest(jens.slashCommand);
-exports.checkAllUsers = functions.https.onRequest(jens.checkAllUsers)
+exports.checkAllUsers = functions.https.onRequest(jens.checkAllUsers);
+exports.scheduledFunction = functions.pubsub.schedule("every 1 hours").onRun(jens.checkAllUsers)
