@@ -30,6 +30,8 @@ const liveSends = async (userName) => {
 // Check for sends
 ////////////////////////
 
+// TODO: add bouldering checks
+
 const checkAllUsers = async (req, res) => {
     const currentyear = getCurrentYear()
     const users = (
@@ -60,7 +62,6 @@ const postSends = async (userName, dbSendCount, year) => {
         )
         .then((response) => response.data);
         latestAscents = latestAscents["ascents"];
-        // TODO: order ascents by date
         const sortedAscents = latestAscents.sort((a, b) => {
             a = Date.parse(a.date);
             b = Date.parse(b.date);

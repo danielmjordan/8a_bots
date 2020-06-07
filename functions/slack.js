@@ -1,7 +1,6 @@
 const axios = require("axios");
-const webhooks = {
-    sends: ""
-}
+const webhooks = require("./slackHooks").webhooks;
+
 const sends = async(payload) => {
     return sendToChannel("sends", payload)
 }
