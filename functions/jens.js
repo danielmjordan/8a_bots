@@ -49,7 +49,8 @@ const makeSendMessage = (sendData) => {
 Route: ${sendData.zlaggableName}
 Crag: ${sendData.cragName}
 Area: ${sendData.areaName}
-Difficulty: ${sendData.difficulty}`
+Difficulty: ${sendData.difficulty}
+Comment: ${sendData.comment}`
     return msg
 }
 
